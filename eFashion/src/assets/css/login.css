@@ -1,0 +1,125 @@
+
+    /* 1. Basic Reset & Body Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f0f0f0; 
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* 2. Container with Perspective for 3D Flip */
+    .container {
+      perspective: 1000px; /* The larger the value, the less extreme the 3D effect */
+      width: 350px;
+      height: 480px;
+      position: relative;
+    }
+
+    /* 3. Hidden Checkbox to Trigger the Flip */
+    #flip {
+      display: none;
+    }
+
+    /* 4. The Flippable Card */
+    .card {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-style: preserve-3d; 
+      transition: transform 0.8s ease;
+    }
+    /* Flip the card when checkbox is checked */
+    #flip:checked ~ .card {
+      transform: rotateY(180deg);
+    }
+
+    /* 5. Front & Back Faces */
+    .front, .back {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      backface-visibility: hidden; /* Hide the back face when facing front */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      padding: 30px;
+    }
+
+    /* 6. Front Face (Login) */
+    .front {
+      background: #3498db; /* Blue */
+      color: #fff;
+    }
+
+    /* 7. Back Face (Sign Up) - Rotated 180 */
+    .back {
+      background: #e74c3c; /* Red */
+      color: #fff;
+      transform: rotateY(180deg);
+    }
+
+    /* 8. Heading, Inputs, and Buttons */
+    h2 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      outline: none;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 10px;
+      text-transform: uppercase;
+      transition: background 0.3s;
+    }
+
+    /* Different button colors for front/back */
+    .front button {
+      background: #2980b9;
+      color: #fff;
+    }
+    .front button:hover {
+      background: #1f6390;
+    }
+    .back button {
+      background: #c0392b;
+      color: #fff;
+    }
+    .back button:hover {
+      background: #9f2f22;
+    }
+
+    /* 9. Toggle Link */
+    .toggle-link {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .toggle-link a {
+      color: #fff;
+      text-decoration: underline;
+    }
+  
